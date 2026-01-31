@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASL-Tutor - Learn Sign Language</title>
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --card-bg: white;
+            --primary-color: #4CAF50;
+            --secondary-color: #2196F3;
+            --error-color: #f44336;
+            --success-color: #4CAF50;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* High contrast theme */
+        .high-contrast {
+            --bg-color: #000;
+            --text-color: #fff;
+            --card-bg: #222;
+            --primary-color: #00ff00;
+            --secondary-color: #00ffff;
+            --error-color: #ff0000;
+            --success-color: #00ff00;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            min-height: 100vh;
+            transition: all 0.3s ease;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .control-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .control-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .control-btn.active {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-color);
+            border-color: white;
+            font-weight: 600;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .control-btn.inactive {
+            background: rgba(255, 0, 0, 0.2);
+            border-color: rgba(255, 100, 100, 0.5);
+            color: rgba(255, 200, 200, 0.9);
+        }
+
+        .control-btn.inactive:hover {
+            background: rgba(255, 0, 0, 0.3);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card h2 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+        }
+
+        /* Target Sign Display */
+        .target-sign {
+            text-align: center;
+        }
+
+        .sign-display {
+            font-size: 8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .sign-info {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .mastery-bar {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .mastery-fill {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            height: 100%;
+            transition: width 0.5s ease;
+        }
+
+        /* Webcam */
+        .webcam-container {
+            position: relative;
+        }
+
+        #webcam {
+            width: 100%;
+            border-radius: var(--border-radius);
+            transform: scaleX(-1); /* Mirror effect */
+        }
+
+        .webcam-overlay {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Countdown */
+        .countdown {
+            font-size: 3rem;
+            text-align: center;
+            color: var(--secondary-color);
+            margin: 1rem 0;
+        }
+
+        /* Feedback */
+        .feedback {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feedback.show {
+            opacity: 1;
+        }
+
+        .feedback.correct {
+            background: rgba(76, 175, 80, 0.2);
+            color: var(--success-color);
+        }
+
+        .feedback.incorrect {
+            background: rgba(244, 67, 54, 0.2);
+            color: var(--error-color);
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+        }
+
+        .btn-danger {
+            background: #f44336;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Progress Grid */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .progress-item {
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 8px;
+            background: #e0e0e0;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .progress-item.mastered {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .progress-item.learning {
+            background: #FFC107;
+            color: #333;
+        }
+
+        .progress-item.current {
+            border: 3px solid var(--secondary-color);
+        }
+
+        /* Stats */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 1rem 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* User Input */
+        .user-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .user-input input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .user-input input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            max-width: 500px;
+            text-align: center;
+        }
+
+        /* Slow mode indicator */
+        .slow-mode-indicator {
+            background: #FFC107;
+            color: #333;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .slow-mode-indicator.show {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">🤟 ASL-Tutor</div>
+        <div class="controls">
+            <button class="control-btn active" id="audioToggle" title="Toggle Audio">
+                <span class="btn-icon">🔊</span> <span class="btn-text">Audio ON</span>
+            </button>
+            <button class="control-btn" id="contrastToggle" title="High Contrast">
+                ◐ Contrast
+            </button>
+            <button class="control-btn" id="slowModeToggle" title="Slow Mode">
+                🐢 Slow
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Column: Target Sign -->
+        <div class="card target-sign">
+            <h2>Practice This Sign</h2>
+            <div class="sign-display" id="targetSign">A</div>
+            <div class="sign-info">
+                Attempts: <span id="attemptCount">0</span> | 
+                Streak: <span id="streakCount">0</span>
+            </div>
+            <div class="mastery-bar">
+                <div class="mastery-fill" id="masteryFill" style="width: 0%"></div>
+            </div>
+            <p>Mastery: <span id="masteryPercent">0%</span></p>
+            
+            <div class="countdown" id="countdown"></div>
+            
+            <div class="feedback" id="feedback"></div>
+            
+            <button class="btn btn-primary" id="startBtn">Start Practice</button>
+            <button class="btn btn-secondary" id="skipBtn" disabled>Skip Sign</button>
+            <button class="btn btn-danger" id="stopBtn" disabled style="background: #f44336;">Stop Practice</button>
+            
+            <span class="slow-mode-indicator" id="slowIndicator">Slow Mode Active</span>
+        </div>
+
+        <!-- Right Column: Webcam -->
+        <div class="card webcam-container">
+            <h2>Your Sign</h2>
+            <video id="webcam" autoplay playsinline></video>
+            <canvas id="canvas" style="display: none;"></canvas>
+            <div class="webcam-overlay" id="prediction">
+                Prediction: --
+            </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <h2>Your Progress</h2>
+            
+            <!-- User ID Input -->
+            <div class="user-input">
+                <input type="text" id="userId" placeholder="Enter your name" value="student1">
+                <button class="btn btn-secondary" id="loadUser">Load Progress</button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="overallMastery">0%</div>
+                    <div class="stat-label">Overall Mastery</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="totalAttempts">0</div>
+                    <div class="stat-label">Total Attempts</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="signsMastered">0/29</div>
+                    <div class="stat-label">Signs Mastered</div>
+                </div>
+            </div>
+            
+            <!-- Progress Grid -->
+            <div class="progress-grid" id="progressGrid">
+                <!-- Signs will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Report Modal -->
+    <div class="modal" id="reportModal">
+        <div class="modal-content" style="max-width: 600px; max-height: 80vh; overflow-y: auto;">
+            <h2>📊 Session Report</h2>
+            <div id="reportContent">
+                <!-- Report will be populated here -->
+            </div>
+            <br>
+            <button class="btn btn-primary" id="closeReport">Close Report</button>
+            <button class="btn btn-secondary" id="newSession">Start New Session</button>
+        </div>
+    </div>
+
+    <!-- Welcome Modal -->
+    <div class="modal" id="welcomeModal">
+        <div class="modal-content">
+            <h2>🤟 Welcome to ASL-Tutor!</h2>
+            <p>Learn American Sign Language alphabet with our adaptive AI tutor.</p>
+            <br>
+            <p><strong>How it works:</strong></p>
+            <ul style="text-align: left; margin: 1rem 2rem;">
+                <li>The AI selects signs to practice based on your progress</li>
+                <li>Show the sign to your webcam</li>
+                <li>Get instant feedback and track your mastery</li>
+            </ul>
+            <br>
+            <input type="text" id="welcomeUserId" placeholder="Enter your name" 
+                   style="width: 100%; padding: 1rem; font-size: 1rem; border-radius: 10px; border: 2px solid #ddd;">
+            <br><br>
+            <button class="btn btn-primary" id="startLearning">Start Learning!</button>
+        </div>
+    </div>
+
+    <script>
+        // =================================================================
+        // Configuration
+        // =================================================================
+        const API_URL = 'http://localhost:8000';
+        const ASL_CLASSES = [
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            'del', 'nothing', 'space'
+        ];
+
+        // =================================================================
+        // State
+        // =================================================================
+        let state = {
+            userId: 'student1',
+            currentSign: 'A',
+            isRunning: false,
+            countdownTime: 5,
+            attemptStartTime: null,
+            audioEnabled: true,
+            slowMode: false,
+            highContrast: false,
+            progress: {},
+            // Session tracking for report
+            sessionData: {
+                startTime: null,
+                attempts: [],
+                signsPracticed: {},
+                correctCount: 0,
+                totalCount: 0
+            }
+        };
+
+        // =================================================================
+        // DOM Elements
+        // =================================================================
+        const elements = {
+            webcam: document.getElementById('webcam'),
+            canvas: document.getElementById('canvas'),
+            targetSign: document.getElementById('targetSign'),
+            prediction: document.getElementById('prediction'),
+            countdown: document.getElementById('countdown'),
+            feedback: document.getElementById('feedback'),
+            startBtn: document.getElementById('startBtn'),
+            skipBtn: document.getElementById('skipBtn'),
+            stopBtn: document.getElementById('stopBtn'),
+            masteryFill: document.getElementById('masteryFill'),
+            masteryPercent: document.getElementById('masteryPercent'),
+            attemptCount: document.getElementById('attemptCount'),
+            streakCount: document.getElementById('streakCount'),
+            progressGrid: document.getElementById('progressGrid'),
+            overallMastery: document.getElementById('overallMastery'),
+            totalAttempts: document.getElementById('totalAttempts'),
+            signsMastered: document.getElementById('signsMastered'),
+            userId: document.getElementById('userId'),
+            welcomeModal: document.getElementById('welcomeModal'),
+            reportModal: document.getElementById('reportModal'),
+            reportContent: document.getElementById('reportContent'),
+            slowIndicator: document.getElementById('slowIndicator')
+        };
+
+        // =================================================================
+        // Webcam Setup
+        // =================================================================
+        async function setupWebcam() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user', width: 640, height: 480 }
+                });
+                elements.webcam.srcObject = stream;
+                console.log('Webcam ready');
+            } catch (err) {
+                console.error('Webcam error:', err);
+                alert('Could not access webcam. Please allow camera access.');
+            }
+        }
+
+        // =================================================================
+        // API Functions
+        // =================================================================
+        async function apiCall(endpoint, method = 'GET', data = null) {
+            const options = {
+                method,
+                headers: { 'Content-Type': 'application/json' }
+            };
+            
+            if (data) {
+                options.body = JSON.stringify(data);
+            }
+            
+            try {
+                const response = await fetch(`${API_URL}${endpoint}`, options);
+                console.log(`API ${endpoint} response:`, response.status);
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.error('API Error response:', errorText);
+                    throw new Error(`API error: ${response.status}`);
+                }
+                return await response.json();
+            } catch (err) {
+                console.error('API Error:', err);
+                return null;
+            }
+        }
+
+        async function getNextSign() {
+            const result = await apiCall('/next_sign', 'POST', { user_id: state.userId });
+            if (result) {
+                state.currentSign = result.sign;
+                updateTargetDisplay(result);
+            }
+            return result;
+        }
+
+        async function predictSign(imageBase64) {
+            console.log('Sending prediction request...');
+            console.log('Image length:', imageBase64.length);
+            const result = await apiCall('/predict', 'POST', {
+                image_base64: imageBase64,
+                user_id: state.userId,
+                target_sign: state.currentSign
+            });
+            console.log('Prediction result:', result);
+            return result;
+        }
+
+        async function updateProgress(correct, responseTime) {
+            return await apiCall('/update', 'POST', {
+                user_id: state.userId,
+                sign_label: state.currentSign,
+                correct,
+                response_time: responseTime
+            });
+        }
+
+        async function getProgress() {
+            return await apiCall(`/progress/${state.userId}`);
+        }
+
+        async function startSession() {
+            return await apiCall('/session/start', 'POST', { 
+                user_id: state.userId,
+                mode: 'adaptive'
+            });
+        }
+
+        // =================================================================
+        // UI Updates
+        // =================================================================
+        function updateTargetDisplay(signData) {
+            elements.targetSign.textContent = state.currentSign;
+            
+            if (signData) {
+                const mastery = Math.round(signData.mastery * 100);
+                elements.masteryFill.style.width = `${mastery}%`;
+                elements.masteryPercent.textContent = `${mastery}%`;
+                elements.attemptCount.textContent = signData.attempts || 0;
+            }
+        }
+
+        function updateProgressGrid(progressData) {
+            elements.progressGrid.innerHTML = '';
+            
+            ASL_CLASSES.forEach(sign => {
+                const div = document.createElement('div');
+                div.className = 'progress-item';
+                div.textContent = sign;
+                
+                if (progressData && progressData[sign]) {
+                    const mastery = progressData[sign].mastery;
+                    if (mastery >= 0.8) {
+                        div.classList.add('mastered');
+                    } else if (mastery >= 0.3) {
+                        div.classList.add('learning');
+                    }
+                }
+                
+                if (sign === state.currentSign) {
+                    div.classList.add('current');
+                }
+                
+                elements.progressGrid.appendChild(div);
+            });
+        }
+
+        async function refreshProgress() {
+            const progress = await getProgress();
+            if (progress) {
+                state.progress = progress;
+                
+                elements.overallMastery.textContent = 
+                    `${Math.round(progress.overall_mastery * 100)}%`;
+                elements.totalAttempts.textContent = progress.total_attempts;
+                elements.signsMastered.textContent = 
+                    `${progress.signs_mastered}/29`;
+                
+                updateProgressGrid(progress.progress_by_sign);
+            }
+        }
+
+        function showFeedback(correct, prediction, confidence) {
+            elements.feedback.className = `feedback show ${correct ? 'correct' : 'incorrect'}`;
+            
+            if (correct) {
+                elements.feedback.textContent = '✓ Correct!';
+                speak('Correct!');
+            } else {
+                elements.feedback.textContent = `✗ That looked like "${prediction}"`;
+                speak(`That looked like ${prediction}`);
+            }
+            
+            // Update streak
+            if (state.progress.progress_by_sign) {
+                const signProgress = state.progress.progress_by_sign[state.currentSign];
+                if (signProgress) {
+                    elements.streakCount.textContent = correct ? 
+                        (parseInt(elements.streakCount.textContent) + 1) : 0;
+                }
+            }
+            
+            // Hide feedback after delay
+            const delay = state.slowMode ? 4000 : 2000;
+            setTimeout(() => {
+                elements.feedback.classList.remove('show');
+            }, delay);
+        }
+
+        // =================================================================
+        // Text-to-Speech
+        // =================================================================
+        function speak(text) {
+            if (!state.audioEnabled) return;
+            
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.rate = state.slowMode ? 0.7 : 1.0;
+            speechSynthesis.speak(utterance);
+        }
+
+        // =================================================================
+        // Image Capture
+        // =================================================================
+        function captureFrame() {
+            const video = elements.webcam;
+            const canvas = elements.canvas;
+            
+            canvas.width = 224;
+            canvas.height = 224;
+            
+            const ctx = canvas.getContext('2d');
+            
+            // Draw centered crop
+            const size = Math.min(video.videoWidth, video.videoHeight);
+            const x = (video.videoWidth - size) / 2;
+            const y = (video.videoHeight - size) / 2;
+            
+            ctx.drawImage(video, x, y, size, size, 0, 0, 224, 224);
+            
+            // Get base64 without header
+            const dataUrl = canvas.toDataURL('image/jpeg', 0.8);
+            return dataUrl.split(',')[1];
+        }
+
+        // =================================================================
+        // Practice Loop
+        // =================================================================
+        async function startPractice() {
+            state.isRunning = true;
+            elements.startBtn.disabled = true;
+            elements.skipBtn.disabled = false;
+            elements.stopBtn.disabled = false;
+            
+            // Reset session data
+            state.sessionData = {
+                startTime: new Date(),
+                attempts: [],
+                signsPracticed: {},
+                correctCount: 0,
+                totalCount: 0
+            };
+            
+            // Get first sign
+            await getNextSign();
+            speak(`Practice the sign for ${state.currentSign}`);
+            
+            // Start practice loop
+            practiceLoop();
+        }
+
+        async function practiceLoop() {
+            if (!state.isRunning) return;
+            
+            // Countdown
+            const countdownDuration = state.slowMode ? 8 : 5;
+            for (let i = countdownDuration; i > 0; i--) {
+                elements.countdown.textContent = i;
+                await sleep(1000);
+                if (!state.isRunning) return;
+            }
+            elements.countdown.textContent = '';
+            
+            // Capture and predict
+            state.attemptStartTime = Date.now();
+            const imageBase64 = captureFrame();
+            const result = await predictSign(imageBase64);
+            
+            if (result) {
+                const responseTime = (Date.now() - state.attemptStartTime) / 1000;
+                const correct = result.is_correct;
+                
+                // Track session data
+                state.sessionData.totalCount++;
+                if (correct) state.sessionData.correctCount++;
+                
+                // Track per-sign data
+                if (!state.sessionData.signsPracticed[state.currentSign]) {
+                    state.sessionData.signsPracticed[state.currentSign] = {
+                        attempts: 0,
+                        correct: 0,
+                        times: []
+                    };
+                }
+                state.sessionData.signsPracticed[state.currentSign].attempts++;
+                if (correct) state.sessionData.signsPracticed[state.currentSign].correct++;
+                state.sessionData.signsPracticed[state.currentSign].times.push(responseTime);
+                
+                // Log attempt
+                state.sessionData.attempts.push({
+                    sign: state.currentSign,
+                    predicted: result.predicted_sign,
+                    correct: correct,
+                    confidence: result.confidence,
+                    responseTime: responseTime,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // Update display
+                elements.prediction.textContent = 
+                    `Prediction: ${result.predicted_sign} (${Math.round(result.confidence * 100)}%)`;
+                
+                showFeedback(correct, result.predicted_sign, result.confidence);
+                
+                // Update backend
+                await updateProgress(correct, responseTime);
+                await refreshProgress();
+                
+                // Wait before next sign
+                const delay = state.slowMode ? 4000 : 2000;
+                await sleep(delay);
+                
+                // Get next sign
+                await getNextSign();
+                speak(`Now practice ${state.currentSign}`);
+                
+                // Continue loop
+                practiceLoop();
+            }
+        }
+
+        function stopPractice() {
+            state.isRunning = false;
+            elements.startBtn.disabled = false;
+            elements.skipBtn.disabled = true;
+            elements.stopBtn.disabled = true;
+            elements.countdown.textContent = '';
+            
+            // Show session report
+            if (state.sessionData.totalCount > 0) {
+                showSessionReport();
+            }
+        }
+
+        function showSessionReport() {
+            const session = state.sessionData;
+            const duration = Math.round((new Date() - session.startTime) / 1000);
+            const minutes = Math.floor(duration / 60);
+            const seconds = duration % 60;
+            const accuracy = session.totalCount > 0 
+                ? Math.round((session.correctCount / session.totalCount) * 100) 
+                : 0;
+            
+            // Build report HTML
+            let reportHTML = `
+                <div class="report-summary" style="margin-bottom: 1.5rem;">
+                    <h3 style="margin-bottom: 1rem;">📊 Session Summary</h3>
+                    <div class="stats" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; text-align: center;">
+                        <div class="stat">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">${session.totalCount}</div>
+                            <div style="font-size: 0.9rem; color: #666;">Total Attempts</div>
+                        </div>
+                        <div class="stat">
+                            <div style="font-size: 2rem; font-weight: bold; color: ${accuracy >= 70 ? 'var(--success-color)' : 'var(--error-color)'};">${accuracy}%</div>
+                            <div style="font-size: 0.9rem; color: #666;">Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div style="font-size: 2rem; font-weight: bold; color: var(--secondary-color);">${minutes}:${seconds.toString().padStart(2, '0')}</div>
+                            <div style="font-size: 0.9rem; color: #666;">Duration</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="report-details" style="margin-bottom: 1.5rem;">
+                    <h3 style="margin-bottom: 1rem;">📝 Signs Practiced</h3>
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+                        <thead>
+                            <tr style="background: #f5f5f5;">
+                                <th style="padding: 0.5rem; text-align: left; border-bottom: 2px solid #ddd;">Sign</th>
+                                <th style="padding: 0.5rem; text-align: center; border-bottom: 2px solid #ddd;">Attempts</th>
+                                <th style="padding: 0.5rem; text-align: center; border-bottom: 2px solid #ddd;">Correct</th>
+                                <th style="padding: 0.5rem; text-align: center; border-bottom: 2px solid #ddd;">Accuracy</th>
+                                <th style="padding: 0.5rem; text-align: center; border-bottom: 2px solid #ddd;">Avg Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+            
+            // Sort signs by attempts (most practiced first)
+            const sortedSigns = Object.entries(session.signsPracticed)
+                .sort((a, b) => b[1].attempts - a[1].attempts);
+            
+            for (const [sign, data] of sortedSigns) {
+                const signAccuracy = Math.round((data.correct / data.attempts) * 100);
+                const avgTime = (data.times.reduce((a, b) => a + b, 0) / data.times.length).toFixed(1);
+                const accuracyColor = signAccuracy >= 70 ? 'var(--success-color)' : signAccuracy >= 40 ? '#FFC107' : 'var(--error-color)';
+                
+                reportHTML += `
+                    <tr>
+                        <td style="padding: 0.5rem; border-bottom: 1px solid #eee; font-weight: bold;">${sign}</td>
+                        <td style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #eee;">${data.attempts}</td>
+                        <td style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #eee;">${data.correct}</td>
+                        <td style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #eee; color: ${accuracyColor}; font-weight: bold;">${signAccuracy}%</td>
+                        <td style="padding: 0.5rem; text-align: center; border-bottom: 1px solid #eee;">${avgTime}s</td>
+                    </tr>
+                `;
+            }
+            
+            reportHTML += `
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="report-feedback" style="padding: 1rem; background: #f9f9f9; border-radius: 8px;">
+                    <h3 style="margin-bottom: 0.5rem;">💡 Feedback</h3>
+                    <p style="margin: 0; color: #666;">
+                        ${accuracy >= 80 
+                            ? "Excellent work! You're making great progress! 🌟" 
+                            : accuracy >= 60 
+                                ? "Good effort! Keep practicing to improve your accuracy. 💪" 
+                                : "Keep practicing! Focus on the signs you found challenging. 📚"}
+                    </p>
+                </div>
+            `;
+            
+            elements.reportContent.innerHTML = reportHTML;
+            elements.reportModal.classList.add('show');
+        }
+
+        async function skipSign() {
+            await getNextSign();
+            speak(`Skipping to ${state.currentSign}`);
+            await refreshProgress();
+        }
+
+        // =================================================================
+        // Accessibility Controls
+        // =================================================================
+        function toggleAudio() {
+            state.audioEnabled = !state.audioEnabled;
+            const btn = document.getElementById('audioToggle');
+            btn.classList.toggle('active', state.audioEnabled);
+            btn.classList.toggle('inactive', !state.audioEnabled);
+            btn.querySelector('.btn-icon').textContent = state.audioEnabled ? '🔊' : '🔇';
+            btn.querySelector('.btn-text').textContent = state.audioEnabled ? 'Audio ON' : 'Audio OFF';
+        }
+
+        function toggleContrast() {
+            state.highContrast = !state.highContrast;
+            document.body.classList.toggle('high-contrast', state.highContrast);
+            document.getElementById('contrastToggle').classList.toggle('active', state.highContrast);
+        }
+
+        function toggleSlowMode() {
+            state.slowMode = !state.slowMode;
+            document.getElementById('slowModeToggle').classList.toggle('active', state.slowMode);
+            elements.slowIndicator.classList.toggle('show', state.slowMode);
+        }
+
+        // =================================================================
+        // Utilities
+        // =================================================================
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // =================================================================
+        // Event Listeners
+        // =================================================================
+        document.getElementById('startBtn').addEventListener('click', startPractice);
+        document.getElementById('skipBtn').addEventListener('click', skipSign);
+        document.getElementById('stopBtn').addEventListener('click', stopPractice);
+        document.getElementById('audioToggle').addEventListener('click', toggleAudio);
+        document.getElementById('contrastToggle').addEventListener('click', toggleContrast);
+        document.getElementById('slowModeToggle').addEventListener('click', toggleSlowMode);
+        
+        document.getElementById('closeReport').addEventListener('click', () => {
+            elements.reportModal.classList.remove('show');
+        });
+        
+        document.getElementById('newSession').addEventListener('click', () => {
+            elements.reportModal.classList.remove('show');
+            startPractice();
+        });
+        
+        document.getElementById('loadUser').addEventListener('click', async () => {
+            state.userId = elements.userId.value || 'student1';
+            await startSession();
+            await refreshProgress();
+            await getNextSign();
+        });
+
+        document.getElementById('startLearning').addEventListener('click', async () => {
+            const userId = document.getElementById('welcomeUserId').value;
+            if (userId) {
+                state.userId = userId;
+                elements.userId.value = userId;
+            }
+            elements.welcomeModal.classList.remove('show');
+            await startSession();
+            await refreshProgress();
+            await getNextSign();
+        });
+
+        // =================================================================
+        // Initialize
+        // =================================================================
+        async function init() {
+            await setupWebcam();
+            
+            // Initialize progress grid
+            updateProgressGrid({});
+            
+            // Show welcome modal
+            elements.welcomeModal.classList.add('show');
+        }
+
+        init();
+    </script>
+</body>
+</html>

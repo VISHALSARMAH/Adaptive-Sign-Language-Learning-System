@@ -1,0 +1,241 @@
+{
+  "user_id": "vishal",
+  "created_at": "2026-01-29T21:25:17.211774",
+  "total_sessions": 19,
+  "total_attempts": 77,
+  "total_time_spent": 15.090999999999994,
+  "signs": {
+    "A": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5733799999999998,
+      "last_attempt": "2026-01-29T22:55:13.826530",
+      "streak": 0
+    },
+    "B": {
+      "mastery": 0.1875,
+      "attempts": 2,
+      "correct": 1,
+      "avg_time": 1.5692699999999997,
+      "last_attempt": "2026-01-29T22:07:11.092843",
+      "streak": 0
+    },
+    "C": {
+      "mastery": 0.0,
+      "attempts": 3,
+      "correct": 0,
+      "avg_time": 1.1573489999999997,
+      "last_attempt": "2026-01-29T22:55:21.064631",
+      "streak": 0
+    },
+    "D": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5711599999999997,
+      "last_attempt": "2026-01-29T22:07:35.742215",
+      "streak": 0
+    },
+    "E": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5683099999999999,
+      "last_attempt": "2026-01-29T22:54:44.820231",
+      "streak": 0
+    },
+    "F": {
+      "mastery": 0.0,
+      "attempts": 3,
+      "correct": 0,
+      "avg_time": 1.1514719999999998,
+      "last_attempt": "2026-01-29T22:06:46.554127",
+      "streak": 0
+    },
+    "G": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5731399999999995,
+      "last_attempt": "2026-01-29T22:09:13.768620",
+      "streak": 0
+    },
+    "H": {
+      "mastery": 0.1875,
+      "attempts": 3,
+      "correct": 1,
+      "avg_time": 1.1502599999999998,
+      "last_attempt": "2026-01-29T22:08:24.862903",
+      "streak": 0
+    },
+    "I": {
+      "mastery": 0.1875,
+      "attempts": 4,
+      "correct": 1,
+      "avg_time": 0.8669726999999996,
+      "last_attempt": "2026-01-29T22:55:06.485666",
+      "streak": 0
+    },
+    "J": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5653399999999997,
+      "last_attempt": "2026-01-29T22:10:27.211813",
+      "streak": 0
+    },
+    "K": {
+      "mastery": 0.1875,
+      "attempts": 2,
+      "correct": 1,
+      "avg_time": 1.5682799999999997,
+      "last_attempt": "2026-01-29T22:06:09.806408",
+      "streak": 0
+    },
+    "L": {
+      "mastery": 0.0,
+      "attempts": 1,
+      "correct": 0,
+      "avg_time": 2.1567,
+      "last_attempt": "2026-01-29T21:54:23.938451",
+      "streak": 0
+    },
+    "M": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5757199999999996,
+      "last_attempt": "2026-01-29T22:00:22.148768",
+      "streak": 0
+    },
+    "N": {
+      "mastery": 0.54296875,
+      "attempts": 4,
+      "correct": 3,
+      "avg_time": 0.8585096999999997,
+      "last_attempt": "2026-01-29T22:57:00.991562",
+      "streak": 2
+    },
+    "O": {
+      "mastery": 0.3251953125,
+      "attempts": 6,
+      "correct": 3,
+      "avg_time": 0.5200315559999997,
+      "last_attempt": "2026-01-29T22:56:53.765882",
+      "streak": 0
+    },
+    "P": {
+      "mastery": 0.140625,
+      "attempts": 4,
+      "correct": 1,
+      "avg_time": 0.8684396999999997,
+      "last_attempt": "2026-01-29T22:10:02.739925",
+      "streak": 0
+    },
+    "Q": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5691499999999998,
+      "last_attempt": "2026-01-29T22:08:12.482315",
+      "streak": 0
+    },
+    "R": {
+      "mastery": 0.0,
+      "attempts": 1,
+      "correct": 0,
+      "avg_time": 2.1588,
+      "last_attempt": "2026-01-29T21:54:45.879402",
+      "streak": 0
+    },
+    "S": {
+      "mastery": 0.25,
+      "attempts": 2,
+      "correct": 1,
+      "avg_time": 1.6208099999999999,
+      "last_attempt": "2026-01-29T22:57:08.488509",
+      "streak": 1
+    },
+    "T": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5629699999999995,
+      "last_attempt": "2026-01-29T22:06:34.331081",
+      "streak": 0
+    },
+    "U": {
+      "mastery": 0.0,
+      "attempts": 5,
+      "correct": 0,
+      "avg_time": 0.6856117499999997,
+      "last_attempt": "2026-01-29T22:54:59.244082",
+      "streak": 0
+    },
+    "V": {
+      "mastery": 0.1875,
+      "attempts": 2,
+      "correct": 1,
+      "avg_time": 1.5691499999999998,
+      "last_attempt": "2026-01-29T22:00:29.387745",
+      "streak": 0
+    },
+    "W": {
+      "mastery": 0.3251953125,
+      "attempts": 5,
+      "correct": 3,
+      "avg_time": 0.66851025,
+      "last_attempt": "2026-01-29T22:06:22.029366",
+      "streak": 0
+    },
+    "X": {
+      "mastery": 0.0,
+      "attempts": 3,
+      "correct": 0,
+      "avg_time": 1.1517449999999996,
+      "last_attempt": "2026-01-29T22:57:23.016262",
+      "streak": 0
+    },
+    "Y": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5686399999999996,
+      "last_attempt": "2026-01-29T22:05:20.890280",
+      "streak": 0
+    },
+    "Z": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5639299999999996,
+      "last_attempt": "2026-01-29T22:05:45.364647",
+      "streak": 0
+    },
+    "del": {
+      "mastery": 0.0,
+      "attempts": 2,
+      "correct": 0,
+      "avg_time": 1.5620999999999996,
+      "last_attempt": "2026-01-29T22:57:15.700236",
+      "streak": 0
+    },
+    "nothing": {
+      "mastery": 0.0,
+      "attempts": 3,
+      "correct": 0,
+      "avg_time": 1.1567549999999998,
+      "last_attempt": "2026-01-29T22:10:39.433051",
+      "streak": 0
+    },
+    "space": {
+      "mastery": 0.25,
+      "attempts": 2,
+      "correct": 1,
+      "avg_time": 1.5700499999999995,
+      "last_attempt": "2026-01-29T22:07:48.058400",
+      "streak": 1
+    }
+  }
+}

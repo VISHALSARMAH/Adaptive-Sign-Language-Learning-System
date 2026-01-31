@@ -1,0 +1,241 @@
+{
+  "user_id": "student1",
+  "created_at": "2026-01-29T22:55:49.633156",
+  "total_sessions": 1,
+  "total_attempts": 0,
+  "total_time_spent": 0.0,
+  "signs": {
+    "A": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "B": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "C": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "D": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "E": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "F": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "G": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "H": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "I": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "J": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "K": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "L": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "M": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "N": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "O": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "P": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "Q": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "R": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "S": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "T": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "U": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "V": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "W": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "X": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "Y": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "Z": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "del": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "nothing": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    },
+    "space": {
+      "mastery": 0.0,
+      "attempts": 0,
+      "correct": 0,
+      "avg_time": 3.0,
+      "last_attempt": null,
+      "streak": 0
+    }
+  }
+}
