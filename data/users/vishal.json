@@ -1,9 +1,9 @@
 {
   "user_id": "vishal",
   "created_at": "2026-01-29T21:25:17.211774",
-  "total_sessions": 19,
-  "total_attempts": 77,
-  "total_time_spent": 15.090999999999994,
+  "total_sessions": 21,
+  "total_attempts": 92,
+  "total_time_spent": 18.326999999999995,
   "signs": {
     "A": {
       "mastery": 0.0,
@@ -70,11 +70,11 @@
       "streak": 0
     },
     "I": {
-      "mastery": 0.1875,
-      "attempts": 4,
+      "mastery": 0.140625,
+      "attempts": 5,
       "correct": 1,
-      "avg_time": 0.8669726999999996,
-      "last_attempt": "2026-01-29T22:55:06.485666",
+      "avg_time": 0.6647808899999996,
+      "last_attempt": "2026-01-31T20:17:42.298677",
       "streak": 0
     },
     "J": {
@@ -95,10 +95,10 @@
     },
     "L": {
       "mastery": 0.0,
-      "attempts": 1,
+      "attempts": 2,
       "correct": 0,
-      "avg_time": 2.1567,
-      "last_attempt": "2026-01-29T21:54:23.938451",
+      "avg_time": 1.5660899999999998,
+      "last_attempt": "2026-02-06T01:17:50.307784",
       "streak": 0
     },
     "M": {
@@ -110,12 +110,12 @@
       "streak": 0
     },
     "N": {
-      "mastery": 0.54296875,
-      "attempts": 4,
-      "correct": 3,
-      "avg_time": 0.8585096999999997,
-      "last_attempt": "2026-01-29T22:57:00.991562",
-      "streak": 2
+      "mastery": 0.3516433350741863,
+      "attempts": 14,
+      "correct": 9,
+      "avg_time": 0.21716902812294148,
+      "last_attempt": "2026-02-06T01:17:43.094287",
+      "streak": 0
     },
     "O": {
       "mastery": 0.3251953125,
@@ -182,20 +182,20 @@
       "streak": 0
     },
     "W": {
-      "mastery": 0.3251953125,
-      "attempts": 5,
-      "correct": 3,
-      "avg_time": 0.66851025,
-      "last_attempt": "2026-01-29T22:06:22.029366",
-      "streak": 0
+      "mastery": 0.493896484375,
+      "attempts": 6,
+      "correct": 4,
+      "avg_time": 0.5243571749999999,
+      "last_attempt": "2026-02-06T01:17:06.997037",
+      "streak": 1
     },
     "X": {
-      "mastery": 0.0,
-      "attempts": 3,
-      "correct": 0,
-      "avg_time": 1.1517449999999996,
-      "last_attempt": "2026-01-29T22:57:23.016262",
-      "streak": 0
+      "mastery": 0.25,
+      "attempts": 4,
+      "correct": 1,
+      "avg_time": 0.8659214999999997,
+      "last_attempt": "2026-02-06T01:17:21.446751",
+      "streak": 1
     },
     "Y": {
       "mastery": 0.0,
@@ -230,12 +230,12 @@
       "streak": 0
     },
     "space": {
-      "mastery": 0.25,
-      "attempts": 2,
+      "mastery": 0.1875,
+      "attempts": 3,
       "correct": 1,
-      "avg_time": 1.5700499999999995,
-      "last_attempt": "2026-01-29T22:07:48.058400",
-      "streak": 1
+      "avg_time": 1.1551349999999996,
+      "last_attempt": "2026-02-06T01:16:52.565794",
+      "streak": 0
     }
   }
 }
